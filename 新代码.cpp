@@ -1,15 +1,14 @@
-
 #include<stdio.h> 
 #include<string.h> 
 #include<process.h>
-#include<conio.h> /*Í¨¹ı¿ØÖÆÌ¨½øĞĞÊı¾İÊäÈëºÍÊı¾İÊä³öµÄº¯Êı*/
+#include<conio.h> 
 #include<stdlib.h>
 #define N 30 
 #define M 3 typedef struct student 
-{ char number[10]; 
-char name[20];
+{char number[10]; 
+ char name[20];
  float score[M]; 
-float aver;
+ float aver;
 float total;}
 STU; STU stu[N]; int n; 
 void inputscore(void); void savescore(void); 
@@ -20,163 +19,163 @@ void add(void); void modify(void); void delscore(void);
 void menu(void); 
 void main() { short int flag=0; menu(); 
 do { flag=1; switch(getch())
- { case'1':inputscore();break; /*ÊäÈë³É¼¨*/
- case'2':lookscore();break; /*²é¿´³É¼¨*/
- case'3':searchscore();break; /*²éÕÒ³É¼¨*/
- case'4':statistic();break; /*³É¼¨Í³¼Æ*/ 
-case'5':modify();break; /*ĞŞ¸Ä³É¼¨*/
- case'6':add();break; /*Ìí¼Ó³É¼¨*/ 
-case'7':delscore();break; /*É¾³ı³É¼¨*/
- case'8':savescore();break; /*±£´æ³É¼¨*/ 
-case'9':exit(0); /*ÍË³ö³ÌĞò*/ 
-default:printf("ÊäÈëÓĞÎó\n"); } 
-printf("°´ÈÎÒâ¼ü¼ÌĞø\n"); getch(); menu(); }
+ { case'1':inputscore();break; /*è¾“å…¥æˆç»©*/
+ case'2':lookscore();break; /*æŸ¥çœ‹æˆç»©*/
+ case'3':searchscore();break; /*æŸ¥æ‰¾æˆç»©*/
+ case'4':statistic();break; /*æˆç»©ç»Ÿè®¡*/ 
+case'5':modify();break; /*ä¿®æ”¹æˆç»©*/
+ case'6':add();break; /*æ·»åŠ æˆç»©*/ 
+case'7':delscore();break; /*åˆ é™¤æˆç»©*/
+ case'8':savescore();break; /*ä¿å­˜æˆç»©*/ 
+case'9':exit(0); /*é€€å‡ºç¨‹åº*/ 
+default:printf("è¾“å…¥æœ‰è¯¯\n"); } 
+printf("æŒ‰ä»»æ„é”®ç»§ç»­\n"); getch(); menu(); }
 while (flag==1); } 
 void menu(void)
  { system("cls"); printf("\n"); 
-printf("**********»¶Ó­½øÈëÑ§Éú³É¼¨¹ÜÀíÏµÍ³**********\n"); 
-printf(" ²Ëµ¥\n"); printf("ÊäÈë³É¼¨-------------1\n"); 
-printf("²é¿´³É¼¨¼°³É¼¨ÅÅĞò--------2\n");
- printf("²éÑ¯Ñ§Éú³É¼¨------------3\n");
- printf("³É¼¨Í³¼Æ-----------------4\n");
- printf("ĞŞ¸Ä³É¼¨-------------5\n"); 
-printf("Ìí¼Ó³É¼¨-------------6\n"); 
-printf("É¾³ı³É¼¨-------------7\n"); 
-printf("±£´æ³É¼¨-------------8\n"); 
-printf("ÍÆ³öÏµÍ³-------------9\n"); 
+printf("**********æ¬¢è¿è¿›å…¥å­¦ç”Ÿæˆç»©ç®¡ç†ç³»ç»Ÿ**********\n"); 
+printf(" èœå•\n"); printf("è¾“å…¥æˆç»©-------------1\n"); 
+printf("æŸ¥çœ‹æˆç»©åŠæˆç»©æ’åº--------2\n");
+ printf("æŸ¥è¯¢å­¦ç”Ÿæˆç»©------------3\n");
+ printf("æˆç»©ç»Ÿè®¡-----------------4\n");
+ printf("ä¿®æ”¹æˆç»©-------------5\n"); 
+printf("æ·»åŠ æˆç»©-------------6\n"); 
+printf("åˆ é™¤æˆç»©-------------7\n"); 
+printf("ä¿å­˜æˆç»©-------------8\n"); 
+printf("æ¨å‡ºç³»ç»Ÿ-------------9\n"); 
 printf("********************************\n"); 
-printf("ÇëÊäÈëÄúµÄÑ¡Ôñ\n"); } 
+printf("è¯·è¾“å…¥æ‚¨çš„é€‰æ‹©\n"); } 
 
 
-/********ÊäÈë¸÷¸öÍ¬Ñ§µÄÑ§ÉúĞÅÏ¢(Íõ³¬)**********/ void inputscore(void) { int i,j; 
+/********è¾“å…¥å„ä¸ªåŒå­¦çš„å­¦ç”Ÿä¿¡æ¯(ç‹è¶…)**********/ void inputscore(void) { int i,j; 
 
 system("cls");
-printf("ÇëÊäÈëÑ§Éú×ÜÊı: \n"); 
+printf("è¯·è¾“å…¥å­¦ç”Ÿæ€»æ•°: \n"); 
 scanf("%d",&n);
-printf("ÌáÊ¾£º*ÊäÈëÑ§ºÅÊ±ÇëÊäÈëÓÉ1Î»´óĞ´×ÖÄ¸ºÍ8Î»Êı×Ö×é³ÉµÄÑ§ºÅ£¬ÈçP01214000*\n"); /*Òò¶şÎ¬±íÉÏÏÂĞèÒª¶ÔÕı¹ÊÓĞ´ËÒªÇó*/
+printf("æç¤ºï¼š*è¾“å…¥å­¦å·æ—¶è¯·è¾“å…¥ç”±1ä½å¤§å†™å­—æ¯å’Œ8ä½æ•°å­—ç»„æˆçš„å­¦å·ï¼Œå¦‚P01214000*\n"); /*å› äºŒç»´è¡¨ä¸Šä¸‹éœ€è¦å¯¹æ­£æ•…æœ‰æ­¤è¦æ±‚*/
 for(i=0;i<n;i++)
-{printf("ÇëÊäÈëÑ§Éú%dµÄÑ§ºÅĞÕÃû:\n",i+1); scanf("%s%s",stu[i].number,stu[i].name);
- printf("¸ßÊı\tÎïÀí\tCÓïÑÔ\n");
+{printf("è¯·è¾“å…¥å­¦ç”Ÿ%dçš„å­¦å·å§“å:\n",i+1); scanf("%s%s",stu[i].number,stu[i].name);
+ printf("é«˜æ•°\tç‰©ç†\tCè¯­è¨€\n");
  for(j=0;j<M;j++) scanf("%f",&stu[i].score[j]); }
- printf("³É¹¦ÊäÈë\n"); } /***********¼ÆËã¸÷¸öÍ¬Ñ§µÄ×Ü·Ö£¨ËïÓÑ£©**************/ 
+ printf("æˆåŠŸè¾“å…¥\n"); } /***********è®¡ç®—å„ä¸ªåŒå­¦çš„æ€»åˆ†ï¼ˆå­™å‹ï¼‰**************/ 
 void total(void)
  { int i,j; for(i=0;i<n;i++) 
 { stu[i].total=0; for(j=0;j<M;j++)
- { stu[i].total+=stu[i].score[j]; } } } /***********¼ÆËã¸÷¸öÍ¬Ñ§µÄÆ½¾ù·Ö**********/
+ { stu[i].total+=stu[i].score[j]; } } } /***********è®¡ç®—å„ä¸ªåŒå­¦çš„å¹³å‡åˆ†**********/
  void avergescore(void) 
 { int i,j; for(i=0;i<n;i++) 
 { stu[i].aver=0; for(j=0;j<M;j++)
  { stu[i].aver+=stu[i].score[j]; } 
-stu[i].aver=stu[i].aver/M; } } /*******²é¿´Ñ§Éú³É¼¨¼°Æ½¾ù·Ö¶ÔÑ§Éú½øĞĞÅÅĞò*********/ 
+stu[i].aver=stu[i].aver/M; } } /*******æŸ¥çœ‹å­¦ç”Ÿæˆç»©åŠå¹³å‡åˆ†å¯¹å­¦ç”Ÿè¿›è¡Œæ’åº*********/ 
 void lookscore(void)
  { int i,j,k; 
 STU t; total(); avergescore(); system("cls"); for(i=0;i<n-1;i++)
   { for(k=i,j=i+1;j<n;j++) if(stu[i].aver<stu[j].aver) 
 { t=stu[j]; stu[j]=stu[i]; stu[i]=t; } } 
-printf("Ãû´Î\tÑ§ºÅ\t\tĞÕÃû\t¸ßÊı\tÎïÀí\tCÓïÑÔ\t×Ü·Ö\tÆ½¾ù·Ö\n"); 
+printf("åæ¬¡\tå­¦å·\t\tå§“å\té«˜æ•°\tç‰©ç†\tCè¯­è¨€\tæ€»åˆ†\tå¹³å‡åˆ†\n"); 
 for(i=0;i<n;i++) 
 { printf("%d\t%s\t%s\t",i+1,stu[i].number,stu[i].name); 
   for(j=0;j<M;j++) printf("%4.2f\t",stu[i].score[j]); printf("%4.2f\t",stu[i].total); 
-  printf("%4.2f\t",stu[i].aver); printf("\n"); } } /********Í¨¹ıÊäÈëÑ§ºÅ²éÕÒÑ§Éú³É¼¨**********/ 
+  printf("%4.2f\t",stu[i].aver); printf("\n"); } } /********é€šè¿‡è¾“å…¥å­¦å·æŸ¥æ‰¾å­¦ç”Ÿæˆç»©**********/ 
 void searchscore(void) 
 { char a[10]; int i,j; system("cls"); 
-printf("ÇëÊäÈëĞèÒª²éÑ¯µÄÑ§ÉúÑ§ºÅ\n"); 
+printf("è¯·è¾“å…¥éœ€è¦æŸ¥è¯¢çš„å­¦ç”Ÿå­¦å·\n"); 
 scanf("%s",a); 
 for(i=0;i<n;i++) 
 { if(strcmp(a,stu[i].number)==0)
- {printf("Ãû´Î\tÑ§ºÅ\t\tĞÕÃû\t¸ßÊı\tÎïÀí\tCÓïÑÔ\t×Ü·Ö\tÆ½¾ù·Ö\n");
+ {printf("åæ¬¡\tå­¦å·\t\tå§“å\té«˜æ•°\tç‰©ç†\tCè¯­è¨€\tæ€»åˆ†\tå¹³å‡åˆ†\n");
   printf("%d\t%s\t%s\t",i+1,stu[i].number,stu[i].name); 
   for(j=0;j<M;j++)
    printf("%4.2f\t",stu[i].score[j]);
   printf("%4.2f\t",stu[i].total); 
   printf("%4.2f\t",stu[i].aver); 
-  printf("\n"); break; /*ÕÒµ½¸ÃÑ§ÉúµÄ³É¼¨ĞÅÏ¢ºóÌø³öforÑ­»·*/ }
+  printf("\n"); break; /*æ‰¾åˆ°è¯¥å­¦ç”Ÿçš„æˆç»©ä¿¡æ¯åè·³å‡ºforå¾ªç¯*/ }
  else if (i<n-1) continue; 
-else printf("Î´ÕÒµ½¸ÃÑ§ÉúĞÅÏ¢\n"); } } /******Í³¼ÆÑ§Éú³É¼¨ĞÅÏ¢£¬Æ½¾ù·Ö¼°¸ñÂÊ£¬ÓÅĞãÂÊ*********/ 
+else printf("æœªæ‰¾åˆ°è¯¥å­¦ç”Ÿä¿¡æ¯\n"); } } /******ç»Ÿè®¡å­¦ç”Ÿæˆç»©ä¿¡æ¯ï¼Œå¹³å‡åˆ†åŠæ ¼ç‡ï¼Œä¼˜ç§€ç‡*********/ 
 void statistic(void)
  { STU *p=stu; int i,j; 
 float count=0.0,sum=0.0; 
 system("cls"); 
 for(i=0;i<n;i++) 
 { sum+=(p=i)->aver; } 
-printf("¸Ã°à¼¶Æ½¾ù·ÖÎª%4.2f\n",sum/n); /*Æ½¾ù·Ö¼ÆËã*/ 
+printf("è¯¥ç­çº§å¹³å‡åˆ†ä¸º%4.2f\n",sum/n); /*å¹³å‡åˆ†è®¡ç®—*/ 
 for(i=0;i<n;i++) 
 { if((p+1)->aver>=60) count++; } 
-printf("¸Ã°à¼¶¼°¸ñÂÊÎª%4.2f%%\n",count/n*100); /*¼°¸ñÂÊ¼ÆËã*/ 
+printf("è¯¥ç­çº§åŠæ ¼ç‡ä¸º%4.2f%%\n",count/n*100); /*åŠæ ¼ç‡è®¡ç®—*/ 
 count=0.0; 
 for(i=0;i<n;i++)
  { if((p+1)->aver>=90) count++; }
- printf("¸Ã°à¼¶ÓÅĞãÂÊÎª%4.2f%%\n",count/n*100); /*ÓÅĞãÂÊ¼ÆËã*/ 
-printf("Æ½¾ù·ÖµÍÓÚ60µÄÑ§ÉúÃûµ¥\n"); 
+ printf("è¯¥ç­çº§ä¼˜ç§€ç‡ä¸º%4.2f%%\n",count/n*100); /*ä¼˜ç§€ç‡è®¡ç®—*/ 
+printf("å¹³å‡åˆ†ä½äº60çš„å­¦ç”Ÿåå•\n"); 
 for(i=0;i<n;i++)
  { if(stu[i].aver<60) printf("%s\n",stu[i].name); 
-} /*Í³¼Æ²»¼°¸ñÑ§ÉúµÄÃûµ¥*/ } 
-/************ĞŞ¸ÄÑ§Éú³É¼¨********/
+} /*ç»Ÿè®¡ä¸åŠæ ¼å­¦ç”Ÿçš„åå•*/ } 
+/************ä¿®æ”¹å­¦ç”Ÿæˆç»©********/
  void modify(void) 
 { char a[10]; int i,j; system("cls"); 
-printf("ÇëÊäÈëĞèÒªĞŞ¸Ä³É¼¨µÄÑ§ÉúÑ§ºÅ\n"); 
+printf("è¯·è¾“å…¥éœ€è¦ä¿®æ”¹æˆç»©çš„å­¦ç”Ÿå­¦å·\n"); 
 scanf("%s",a); 
 for(i=0;i<n;i++)
  { if(strcmp(a,stu[i].number)==0)
- { printf("Ãû´Î\tÑ§ºÅ\t\tĞÕÃû\t¸ßÊı\tÎïÀí\tCÓïÑÔ\t×Ü·Ö\tÆ½¾ù·Ö\n");
+ { printf("åæ¬¡\tå­¦å·\t\tå§“å\té«˜æ•°\tç‰©ç†\tCè¯­è¨€\tæ€»åˆ†\tå¹³å‡åˆ†\n");
  printf("%d\t%s\t%s\t",i+1,stu[i].number,stu[i].name); 
 for(j=0;j<M;j++)
   printf("%4.2f\t",stu[i].score[j]); printf("%4.2f\t",stu[i].total); 
 printf("%4.2f\t",stu[i].aver); printf("\n");
- printf("ÇëÖØĞÂÊäÈë¸ÃÑ§ÉúµÄÑ§ºÅĞÕÃû:\n");
+ printf("è¯·é‡æ–°è¾“å…¥è¯¥å­¦ç”Ÿçš„å­¦å·å§“å:\n");
  scanf("%s%s",stu[i].number,stu[i].name);
- printf("ÇëÖØĞÂÊäÈëÑ§Éú³É¼¨:\n");
- printf("¸ßÊı\tÎïÀí\tCÓïÑÔ\n");
+ printf("è¯·é‡æ–°è¾“å…¥å­¦ç”Ÿæˆç»©:\n");
+ printf("é«˜æ•°\tç‰©ç†\tCè¯­è¨€\n");
  for(j=0;j<M;j++) 
-scanf("%f",&stu[i].score[j]); /*ÕÒµ½¸ÃÑ§Éú³É¼¨ºó½øĞĞĞŞ¸Ä£¬Ìø³öforÑ­»·*/
- printf("ĞŞ¸Ä³É¹¦\n"); break; } 
+scanf("%f",&stu[i].score[j]); /*æ‰¾åˆ°è¯¥å­¦ç”Ÿæˆç»©åè¿›è¡Œä¿®æ”¹ï¼Œè·³å‡ºforå¾ªç¯*/
+ printf("ä¿®æ”¹æˆåŠŸ\n"); break; } 
 else if (i<n-1) continue; 
-else printf("ÇëÈ·ÈÏ¸ÃÑ§ÉúÊÇ·ñÎ¹±¾°à¼¶Ñ§Éú£¡\n"); } } /**********Ìí¼ÓÑ§Éú³É¼¨**********/ 
+else printf("è¯·ç¡®è®¤è¯¥å­¦ç”Ÿæ˜¯å¦å–‚æœ¬ç­çº§å­¦ç”Ÿï¼\n"); } } /**********æ·»åŠ å­¦ç”Ÿæˆç»©**********/ 
 void add(void)
  { int a,i,j; system("cls"); 
-printf("ÇëÊäÈëĞÂÔö¼ÓµÄÑ§ÉúÈËÊı£º\n"); 
+printf("è¯·è¾“å…¥æ–°å¢åŠ çš„å­¦ç”Ÿäººæ•°ï¼š\n"); 
 scanf("%d",&a); n=n+a;
  for(i=n-a;i<n;i++) 
-{ printf("ÇëÊäÈëÑ§Éú%dµÄÑ§ºÅĞÕÃû:\n",i+1);
+{ printf("è¯·è¾“å…¥å­¦ç”Ÿ%dçš„å­¦å·å§“å:\n",i+1);
  scanf("%s%s",stu[i].number,stu[i].name); 
-printf("ÇëÊäÈëÑ§Éú³É¼¨:\n");
-printf("¸ßÊı\tÎïÀí\tCÓïÑÔ\n");
+printf("è¯·è¾“å…¥å­¦ç”Ÿæˆç»©:\n");
+printf("é«˜æ•°\tç‰©ç†\tCè¯­è¨€\n");
  for(j=0;j<M;j++) 
 scanf("%f",&stu[i].score[j]);
- printf("Ìí¼Ó³É¹¦\n"); } } /******************É¾³ıÑ§Éú³É¼¨***********************/
+ printf("æ·»åŠ æˆåŠŸ\n"); } } /******************åˆ é™¤å­¦ç”Ÿæˆç»©***********************/
  void delscore(void) 
 { int i,j,c; char m,a[10]; 
 system("cls"); 
-printf("ÇëÊäÈëÑ§ÉúÑ§ºÅ\n"); 
+printf("è¯·è¾“å…¥å­¦ç”Ÿå­¦å·\n"); 
 scanf("%s",a); 
 for(i=0;i<n;i++)
  { if(strcmp(a,stu[i].number)==0) 
-{ printf("Ãû´Î\tÑ§ºÅ\t\tĞÕÃû\t¸ßÊı\tÎïÀí\tCÓïÑÔ\t×Ü·Ö\tÆ½¾ù·Ö\n"); 
+{ printf("åæ¬¡\tå­¦å·\t\tå§“å\té«˜æ•°\tç‰©ç†\tCè¯­è¨€\tæ€»åˆ†\tå¹³å‡åˆ†\n"); 
 printf("%d\t%s\t%s\t",i+1,stu[i].number,stu[i].name); 
 for(j=0;j<M;j++) 
 printf("%4.2f\t",stu[i].score[j]);
  printf("%4.2f\t",stu[i].total); 
 printf("%4.2f",stu[i].aver);
  printf("\n"); c=i; break; } 
-else printf("Î´ÕÒµ½¸ÃÑ§ÉúĞÅÏ¢\n"); }
-printf("ÊÇ·ñÉ¾³ı¸ÃÑ§Éú³É¼¨(y\n)\n"); 
+else printf("æœªæ‰¾åˆ°è¯¥å­¦ç”Ÿä¿¡æ¯\n"); }
+printf("æ˜¯å¦åˆ é™¤è¯¥å­¦ç”Ÿæˆç»©(y\n)\n"); 
 scanf("%s",&m); 
 if(m=='y')
- { for(i=c;i<n-1;i++) stu[i]=stu[i+1]; /*½á¹¹ÌåÕûÌå¸³Öµ½«ºóÒ»Î»Ñ§Éú³É¼¨ĞÅÏ¢¿½±´½øÈëÇ°Ò»Î»Ñ§ÉúĞÅÏ¢µÄ´æ´¢Î»ÖÃ*/ 
-n=n-1; /*É¾³ı¸ÃÑ§ÉúĞÅÏ¢ºóÑ§Éú×ÜÊı¼õÒ»*/
- printf("É¾³ı³É¼¨³É¹¦\n")} 
-else printf("É¾³ı³É¼¨Ê§°Ü\n"); } /*****************±£´æÑ§Éú³É¼¨************************/ 
+ { for(i=c;i<n-1;i++) stu[i]=stu[i+1]; /*ç»“æ„ä½“æ•´ä½“èµ‹å€¼å°†åä¸€ä½å­¦ç”Ÿæˆç»©ä¿¡æ¯æ‹·è´è¿›å…¥å‰ä¸€ä½å­¦ç”Ÿä¿¡æ¯çš„å­˜å‚¨ä½ç½®*/ 
+n=n-1; /*åˆ é™¤è¯¥å­¦ç”Ÿä¿¡æ¯åå­¦ç”Ÿæ€»æ•°å‡ä¸€*/
+ printf("åˆ é™¤æˆç»©æˆåŠŸ\n")} 
+else printf("åˆ é™¤æˆç»©å¤±è´¥\n"); } /*****************ä¿å­˜å­¦ç”Ÿæˆç»©************************/ 
 void savescore(void)
  { FILE*fp; int i,flag=1; 
 char m; system("cls");
- puts("ÊÇ·ñ±£´æÑ§Éú³É¼¨£¨y/n£©");
+ puts("æ˜¯å¦ä¿å­˜å­¦ç”Ÿæˆç»©ï¼ˆy/nï¼‰");
  scanf("%s",&m); 
 if(m=='y') 
 { if((fp=fopen("score.dat","wb"))==NULL) 
-{ printf("ÎÄ¼ş´ò¿ªÊ§°Ü\n"); return; } 
+{ printf("æ–‡ä»¶æ‰“å¼€å¤±è´¥\n"); return; } 
 for(i=0;i<n;i++)
  if(fwrite(&stu[i],sizeof(struct student),1,fp)!=1)
- { printf("±£´æÊ§°Ü\n"); flag=0; } 
+ { printf("ä¿å­˜å¤±è´¥\n"); flag=0; } 
 if(flag==1)
- printf("±£´æ³É¹¦!\n");
+ printf("ä¿å­˜æˆåŠŸ!\n");
  fclose(fp); } else return 0; } 
